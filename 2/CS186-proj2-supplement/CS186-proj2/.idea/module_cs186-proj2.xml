@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_cs186-proj2" default="compile.module.cs186-proj2">
+  <dirname property="module.cs186-proj2.basedir" file="${ant.file.module_cs186-proj2}"/>
+  
+  <property name="module.jdk.home.cs186-proj2" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.cs186-proj2" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.cs186-proj2" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.cs186-proj2" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="cs186-proj2.output.dir" value="${module.cs186-proj2.basedir}/../target/classes"/>
+  <property name="cs186-proj2.testoutput.dir" value="${module.cs186-proj2.basedir}/../target/test-classes"/>
+  
+  <path id="cs186-proj2.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="cs186-proj2.module.production.classpath">
+    <path refid="${module.jdk.classpath.cs186-proj2}"/>
+    <path refid="library.maven:_jline:jline:0.9.94.classpath"/>
+    <path refid="library.maven:_junit:junit:4.5.classpath"/>
+    <path refid="library.maven:_com.jcraft:jzlib:1.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.mina:mina-core:2.0.4.classpath"/>
+    <path refid="library.maven:_org.apache.mina:mina-filter-compression:2.0.4.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.1.classpath"/>
+    <path refid="library.maven:_org.berkeley.simpledb:zql:1.0.classpath"/>
+  </path>
+  
+  <path id="cs186-proj2.runtime.production.module.classpath">
+    <pathelement location="${cs186-proj2.output.dir}"/>
+    <path refid="library.maven:_jline:jline:0.9.94.classpath"/>
+    <path refid="library.maven:_junit:junit:4.5.classpath"/>
+    <path refid="library.maven:_com.jcraft:jzlib:1.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.mina:mina-core:2.0.4.classpath"/>
+    <path refid="library.maven:_org.apache.mina:mina-filter-compression:2.0.4.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.1.classpath"/>
+    <path refid="library.maven:_org.berkeley.simpledb:zql:1.0.classpath"/>
+  </path>
+  
+  <path id="cs186-proj2.module.classpath">
+    <path refid="${module.jdk.classpath.cs186-proj2}"/>
+    <pathelement location="${cs186-proj2.output.dir}"/>
+    <path refid="library.maven:_jline:jline:0.9.94.classpath"/>
+    <path refid="library.maven:_junit:junit:4.5.classpath"/>
+    <path refid="library.maven:_com.jcraft:jzlib:1.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.mina:mina-core:2.0.4.classpath"/>
+    <path refid="library.maven:_org.apache.mina:mina-filter-compression:2.0.4.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.1.classpath"/>
+    <path refid="library.maven:_org.berkeley.simpledb:zql:1.0.classpath"/>
+  </path>
+  
+  <path id="cs186-proj2.runtime.module.classpath">
+    <pathelement location="${cs186-proj2.testoutput.dir}"/>
+    <pathelement location="${cs186-proj2.output.dir}"/>
+    <path refid="library.maven:_jline:jline:0.9.94.classpath"/>
+    <path refid="library.maven:_junit:junit:4.5.classpath"/>
+    <path refid="library.maven:_com.jcraft:jzlib:1.0.7.classpath"/>
+    <path refid="library.maven:_org.apache.mina:mina-core:2.0.4.classpath"/>
+    <path refid="library.maven:_org.apache.mina:mina-filter-compression:2.0.4.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.1.classpath"/>
+    <path refid="library.maven:_org.berkeley.simpledb:zql:1.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.cs186-proj2">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.cs186-proj2">
+    <patternset refid="excluded.from.module.cs186-proj2"/>
+  </patternset>
+  
+  <path id="cs186-proj2.module.sourcepath">
+    <dirset dir="${module.cs186-proj2.basedir}/../../CS186-proj2">
+      <include name="src/java"/>
+      <include name="test"/>
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="cs186-proj2.module.test.sourcepath">
+    <dirset dir="${module.cs186-proj2.basedir}/../../CS186-proj2">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.cs186-proj2" depends="compile.module.cs186-proj2.production,compile.module.cs186-proj2.tests" description="Compile module CS186-proj2"/>
+  
+  <target name="compile.module.cs186-proj2.production" depends="register.custom.compilers" description="Compile module CS186-proj2; production classes">
+    <mkdir dir="${cs186-proj2.output.dir}"/>
+    <javac2 destdir="${cs186-proj2.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.cs186-proj2}/javac">
+      <compilerarg line="${compiler.args.cs186-proj2}"/>
+      <bootclasspath refid="cs186-proj2.module.bootclasspath"/>
+      <classpath refid="cs186-proj2.module.production.classpath"/>
+      <src refid="cs186-proj2.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.cs186-proj2"/>
+    </javac2>
+    
+    <copy todir="${cs186-proj2.output.dir}">
+      <fileset dir="${module.cs186-proj2.basedir}/../src/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.cs186-proj2.basedir}/../test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.cs186-proj2.basedir}/../src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.cs186-proj2.basedir}/../src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.cs186-proj2.tests" depends="register.custom.compilers,compile.module.cs186-proj2.production" description="compile module CS186-proj2; test classes" unless="skip.tests">
+    <mkdir dir="${cs186-proj2.testoutput.dir}"/>
+    <javac2 destdir="${cs186-proj2.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.cs186-proj2}/javac">
+      <compilerarg line="${compiler.args.cs186-proj2}"/>
+      <bootclasspath refid="cs186-proj2.module.bootclasspath"/>
+      <classpath refid="cs186-proj2.module.classpath"/>
+      <src refid="cs186-proj2.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.cs186-proj2"/>
+    </javac2>
+    
+    <copy todir="${cs186-proj2.testoutput.dir}">
+      <fileset dir="${module.cs186-proj2.basedir}/../src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.cs186-proj2" description="cleanup module">
+    <delete dir="${cs186-proj2.output.dir}"/>
+    <delete dir="${cs186-proj2.testoutput.dir}"/>
+  </target>
+</project>

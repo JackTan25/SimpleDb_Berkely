@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CS186-proj3:jar">
+    <output-path>$PROJECT_DIR$/</output-path>
+    <root id="archive" name="CS186-proj3.jar">
+      <element id="module-output" name="CS186-proj3" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/junit/junit/4.5/junit-4.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/mina/mina-core/2.0.4/mina-core-2.0.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/mina/mina-filter-compression/2.0.4/mina-filter-compression-2.0.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/jcraft/jzlib/1.0.7/jzlib-1.0.7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/jline/jline/0.9.94/jline-0.9.94.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/berkeley/simpledb/zql/1.0/zql-1.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
